@@ -27,11 +27,11 @@ application up and running.
 |--------------------|---------------------|--------------------------------|
 | title              | string              | null: false                    |
 | explain            | text                | null: false                    |
-| category_id        | string              | null: false, foreign_key: true |
-| condition_id       | string              | null: false, foreign_key: true |
-| delibary_charge_id | string              | null: false, foreign_key: true |
-| ship_from_id       | string              | null: false, foreign_key: true |
-| shipping_date_id   | string              | null: false, foreign_key: true |
+| category_id        | integer             | null: false                    |
+| condition_id       | integer             | null: false                    |
+| delivery_charge_id | integer             | null: false                    |
+| prefecture_id      | integer             | null: false                    |
+| shipping_date_id   | integer             | null: false                    |
 | price              | integer             | null: false                    |
 | user               | references          | null: false, foreign_key: true |
 
