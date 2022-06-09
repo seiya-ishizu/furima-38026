@@ -16,22 +16,22 @@
 
 ### Association
 
-* has_many :product_listing 
-* has_many :purchase_history
+* has_many :product_listings 
+* has_many :purchase_historys
 
-## product_listing table
+## product_listings table
 
 | Column                              | Type       | Options                        |
 |-------------------------------------|------------|--------------------------------|
 | title                               | string     | null: false                    |
 | explain                             | text       | null: false                    |
-| category_id                         | integer    | foreign_key: true              |
-| condition_id                        | integer    | foreign_key: true              |
-| delibary_charge_id                  | integer    | foreign_key: true              |
-| ship_form_id                        | integer    | foreign_key: true              |
-| shipping_date_id                    | integer    | foreign_key: true              |
+| category_id                         | integer    | null: false                    |
+| condition_id                        | integer    | null: false                    |
+| delibary_charge_id                  | integer    | null: false                    |
+| ship_form_id                        | integer    | null: false                    |
+| shipping_date_id                    | integer    | null: false                    |
 | price                               | integer    | null: false                    |
-| saler                               | string     | foreign_key: true              |
+| user                                | references | null: false, foreign_key: true |
 
 
 
@@ -40,36 +40,31 @@
 - belongs_to :user
 - has_one    :purchase_history
 
-## purchase_history table
+## purchase_historys table
 
 | Column             | Type       | Options                        |
 |--------------------|------------|--------------------------------|
-| title              | string     | null: false                    |
-| price              | integer    | null: false                    |
-| delibary_charge_id | integer    | foreign_key: true              |
-| card_number        | integer    | foreign_key: true              |
-| card_month         | integer    | foreign_key: true              |
-| card_year          | integer    | foreign_key: true              |
-| card_cvc           | integer    | foreign_key: true              |
+| user               | references | null: false, foreign_key: true |
+| product_listing    | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
-- has_one :product_listing 
-- has_one :shipping_address
+- has_one :product_listings
+- has_one :shipping_addresses
 
-## shipping_address table
+## shipping_addresses table
 
 | Column           | Type       | Options                        |
 |------------------|------------|--------------------------------|
-| postcode         | integer    | null: false                    |
-| prefecture_id    | integer    | foreign_key: true              |
+| postcode         | string     | null: false                    |
+| prefecture_id    | integer    | null: false                    |
 | city             | string     | null: false                    |
 | block            | string     | null: false                    |
 | building         | string     |                                |
-| phone_number     | integer    | null: false                    |
-| buyer            | string     | foreign_key: true              |
+| phone_number     | string     | null: false                    |
+| purchase_history | references | null: false, foreign_key: true |
 
 ### Association
 
-- has_one :purchase_history
+- has_one :purchase_historys
