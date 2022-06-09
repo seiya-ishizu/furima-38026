@@ -1,4 +1,7 @@
-# DB 設計
+# README
+
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
 ## users table
 
@@ -11,36 +14,33 @@
 | first_name         | string              | null: false               |
 | last_name_kana     | string              | null: false               |
 | first_name_kana    | string              | null: false               |
-| brithday           | date                | null: false               |
-
+| birthday           | date                | null: false               |
 
 ### Association
 
-* has_many :product_listings 
-* has_many :purchase_historys
+- has_many :product_listings
+- has_many :purchase_histories
 
 ## product_listings table
 
-| Column                              | Type       | Options                        |
-|-------------------------------------|------------|--------------------------------|
-| title                               | string     | null: false                    |
-| explain                             | text       | null: false                    |
-| category_id                         | integer    | null: false                    |
-| condition_id                        | integer    | null: false                    |
-| delibary_charge_id                  | integer    | null: false                    |
-| ship_form_id                        | integer    | null: false                    |
-| shipping_date_id                    | integer    | null: false                    |
-| price                               | integer    | null: false                    |
-| user                                | references | null: false, foreign_key: true |
-
-
+| Column             | Type                | Options                        |
+|--------------------|---------------------|--------------------------------|
+| title              | string              | null: false                    |
+| explain            | text                | null: false                    |
+| category_id        | string              | null: false, foreign_key: true |
+| condition_id       | string              | null: false, foreign_key: true |
+| delibary_charge_id | string              | null: false, foreign_key: true |
+| ship_from_id       | string              | null: false, foreign_key: true |
+| shipping_date_id   | string              | null: false, foreign_key: true |
+| price              | integer             | null: false                    |
+| user               | references          | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
-- has_one    :purchase_history
+- has_one :purchase_history
 
-## purchase_historys table
+## purchase_histories table
 
 | Column             | Type       | Options                        |
 |--------------------|------------|--------------------------------|
@@ -50,8 +50,7 @@
 ### Association
 
 - belongs_to :user
-- has_one :product_listings
-- has_one :shipping_addresses
+- belongs_to :product_listing
 
 ## shipping_addresses table
 
@@ -67,4 +66,4 @@
 
 ### Association
 
-- has_one :purchase_historys
+- has_one :purchase_history
