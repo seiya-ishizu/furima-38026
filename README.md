@@ -38,7 +38,7 @@ application up and running.
 ### Association
 
 - belongs_to :user
-- has_one :purchase_history
+- has_one    :purchase_history
 
 ## purchase_histories table
 
@@ -51,6 +51,7 @@ application up and running.
 
 - belongs_to :user
 - belongs_to :product_listing
+- has_one    :shipping_address
 
 ## shipping_addresses table
 
@@ -66,4 +67,4 @@ application up and running.
 
 ### Association
 
-- has_one :purchase_history
+- belongs_to :purchase_history
