@@ -61,3 +61,8 @@ gem 'devise'
 gem 'rspec-rails', '~> 4.0.0'
 gem 'pry-rails'
 gem 'factory_bot_rails'
+
+
+gem 'rubocop', require:false
+gem 'rubocop-rails', require:false
+gem 'rubocop-performance', require:false

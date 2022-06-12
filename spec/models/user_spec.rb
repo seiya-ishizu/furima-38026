@@ -6,7 +6,7 @@ RSpec.describe User, type: :model do
 
   describe "ユーザー新規登録" do
     context '新規登録できる場合' do
-      it "英字のみのパスワードでは登録できない" do
+      it "全ての項目が入力されていれば登録できる" do
       expect(@user).to be_valid
       end
     end
