@@ -7,6 +7,5 @@ class ShippingDate < ActiveHash::Base
   ]
 
   include ActiveHash::Associations
-  belongs_to :product_listing
-  belongs_to :user
+  has_many :product_listings
 end
