@@ -57,7 +57,7 @@ RSpec.describe ProductListing, type: :model do
           @product_listing.valid?
           expect(@product_listing.errors.full_messages).to include("Price can't be blank")
         end
-        it "価格に半角数字以外が含まれている場合は出品できない" do
+        it "価格に半角数字以外が含まれている場合、小数点がある場合は出品できない" do
           @product_listing.price = 'aあ'  
           @product_listing.valid?
           expect(@product_listing.errors.full_messages).to include("Price is not a number")
