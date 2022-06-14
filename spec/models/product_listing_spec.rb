@@ -27,27 +27,27 @@ RSpec.describe ProductListing, type: :model do
           @product_listing.valid?
           expect(@product_listing.errors.full_messages).to include("Explain can't be blank")
         end
-        it "カテゴリーが空だと出品できない" do
+        it "カテゴリーの---が選ばれている場合出品できない" do
           @product_listing.category_id = '1'  
           @product_listing.valid?
           expect(@product_listing.errors.full_messages).to include("Category must be other than 1")
         end
-        it "商品の状態が空だと出品できない" do
+        it "商品の状態の---が選ばれている場合出品できない" do
           @product_listing.condition_id = '1'  
           @product_listing.valid?
           expect(@product_listing.errors.full_messages).to include("Condition must be other than 1")
         end
-        it "配送料の負担が空だと出品できない" do
+        it "配送料の負担の---が選ばれている場合出品できない" do
           @product_listing.delivery_charge_id = '1'  
           @product_listing.valid?
           expect(@product_listing.errors.full_messages).to include("Delivery charge must be other than 1")
         end
-        it "発送元の地域が空だと出品できない" do
+        it "発送元の地域が---が選ばれている場合出品できない" do
           @product_listing.prefecture_id = '1'  
           @product_listing.valid?
           expect(@product_listing.errors.full_messages).to include("Prefecture must be other than 1")
         end
-        it "発送までの日数が空だと出品できない" do
+        it "発送までの日数が---が選ばれている場合出品できない" do
           @product_listing.shipping_date_id = '1'  
           @product_listing.valid?
           expect(@product_listing.errors.full_messages).to include("Shipping date must be other than 1")
