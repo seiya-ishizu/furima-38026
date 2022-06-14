@@ -1,12 +1,12 @@
 <%# cssは商品出品のものを併用しています。
-app/assets/stylesheets/items/new.css %>
+app/assets/stylesheets/product_listings/new.css %>
 
-<div class="items-sell-contents">
-  <header class="items-sell-header">
+<div class="product_listings-sell-contents">
+  <header class="product_listings-sell-header">
     <%= link_to image_tag('furima-logo-color.png' , size: '185x50'), "/" %>
   </header>
-  <div class="items-sell-main">
-    <h2 class="items-sell-title">商品の情報を入力</h2>
+  <div class="product_listings-sell-main">
+    <h2 class="product_listings-sell-title">商品の情報を入力</h2>
     <%= form_with local: true do |f| %>
 
 
@@ -27,24 +27,24 @@ app/assets/stylesheets/items/new.css %>
     </div>
     <%# /商品画像 %>
     <%# 商品名と商品説明 %>
-    <div class="new-items">
+    <div class="new-product_listings">
       <div class="weight-bold-text">
         商品名
         <span class="indispensable">必須</span>
       </div>
-      <%= f.text_area :hoge, class:"items-text", id:"item-name", placeholder:"商品名（必須 40文字まで)", maxlength:"40" %>
-      <div class="items-explain">
+      <%= f.text_area :hoge, class:"product_listings-text", id:"item-name", placeholder:"商品名（必須 40文字まで)", maxlength:"40" %>
+      <div class="product_listings-explain">
         <div class="weight-bold-text">
           商品の説明
           <span class="indispensable">必須</span>
         </div>
-        <%= f.text_area :hoge, class:"items-text", id:"item-info", placeholder:"商品の説明（必須 1,000文字まで）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。" ,rows:"7" ,maxlength:"1000" %>
+        <%= f.text_area :hoge, class:"product_listings-text", id:"item-info", placeholder:"商品の説明（必須 1,000文字まで）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。" ,rows:"7" ,maxlength:"1000" %>
       </div>
     </div>
     <%# /商品名と商品説明 %>
 
     <%# 商品の詳細 %>
-    <div class="items-detail">
+    <div class="product_listings-detail">
       <div class="weight-bold-text">商品の詳細</div>
       <div class="form">
         <div class="weight-bold-text">
@@ -62,7 +62,7 @@ app/assets/stylesheets/items/new.css %>
     <%# /商品の詳細 %>
 
     <%# 配送について %>
-    <div class="items-detail">
+    <div class="product_listings-detail">
       <div class="weight-bold-text question-text">
         <span>配送について</span>
         <a class="question" href="#">?</a>
@@ -146,7 +146,7 @@ app/assets/stylesheets/items/new.css %>
   </div>
   <% end %>
 
-  <footer class="items-sell-footer">
+  <footer class="product_listings-sell-footer">
     <ul class="menu">
       <li><a href="#">プライバシーポリシー</a></li>
       <li><a href="#">フリマ利用規約</a></li>

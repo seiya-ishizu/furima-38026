@@ -30,7 +30,7 @@ application up and running.
 | category_id        | integer             | null: false                    |
 | condition_id       | integer             | null: false                    |
 | delivery_charge_id | integer             | null: false                    |
-| prefecture_id      | integer              | null: false                    |
+| prefecture_id      | integer             | null: false                    |
 | shipping_date_id   | integer             | null: false                    |
 | price              | integer             | null: false                    |
 | user               | references          | null: false, foreign_key: true |

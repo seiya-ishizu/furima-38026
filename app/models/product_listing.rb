@@ -3,7 +3,12 @@ class ProductListing < ApplicationRecord
   has_one_attached :image
   belongs_to :user
     
-  validates :title, :text, :price presence: true
+  validates :image, :title, :explain, :price, presence: true
 
-  validates :genre_id, numericality: { other_than: 1 validates :genre_id, numericality: { other_than: 1 } } 
+  validates :category_id , numericality: { other_than: 1}
+  validates :condition_id , numericality: { other_than: 1}
+  validates :delivery_charge_id , numericality: { other_than: 1}
+  validates :prefecture_id , numericality: { other_than: 1}
+  validates :shipping_date_id , numericality: { other_than: 1}
+  validates_inclusion_of :price, in: 300..9999999
 end
