@@ -51,6 +51,6 @@ class Prefecture < ActiveHash::Base
   ]
 
   include ActiveHash::Associations
-  belongs_to :user
+  belongs_to :product_listing
 
 end

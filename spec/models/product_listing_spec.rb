@@ -57,20 +57,25 @@ RSpec.describe ProductListing, type: :model do
           @product_listing.valid?
           expect(@product_listing.errors.full_messages).to include("Price can't be blank")
         end
-        it "価格が数字でないと出品できない" do
-          @product_listing.price = ''  
+        it "価格に半角数字以外が含まれている場合は出品できない" do
+          @product_listing.price = 'aあ'  
           @product_listing.valid?
-          expect(@product_listing.errors.full_messages).to include("Price is not included in the list")
+          expect(@product_listing.errors.full_messages).to include("Price is not a number")
         end
         it "価格が¥300より少ない時は出品できないこと" do
           @product_listing.price = '299'  
           @product_listing.valid?
-          expect(@product_listing.errors.full_messages).to include("Price is not included in the list")
+          expect(@product_listing.errors.full_messages).to include("Price must be greater than or equal to 300")
         end
         it "価格が¥10,000,000より大きいと出品できない" do
           @product_listing.price = '10_000_000'  
           @product_listing.valid?
-          expect(@product_listing.errors.full_messages).to include("Price is not included in the list")
+          expect(@product_listing.errors.full_messages).to include("Price must be less than or equal to 9999999")
+        end
+        it "userが紐付いていないと出品できない" do
+          @product_listing.user = nil  
+          @product_listing.valid?
+          expect(@product_listing.errors.full_messages).to include("User must exist")
         end
       end
     end
