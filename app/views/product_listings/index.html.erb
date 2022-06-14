@@ -130,29 +130,32 @@
 
       <%# 商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
       <li class='list'>
-        <%= link_to "#" do %>
+        <%= link_to new_product_listing_path do %>
+        <% @product_listings.each do |product_listing| %>
         <div class='item-img-content'>
           <%= image_tag "item-sample.png", class: "item-img" %>
-
-          <%# 商品が売れていればsold outを表示しましょう %>
-          <div class='sold-out'>
-            <span>Sold Out!!</span>
-          </div>
-          <%# //商品が売れていればsold outを表示しましょう %>
-
+          <%# if user_signed_in? && current_user.id == .user_id %>
+            <div class='sold-out'>
+              <span>Sold Out!!</span>
+            </div>
+          <%# end %>
+          <p><%= product_listing.title %></p>
+          <span class="name">
+          </span>
         </div>
         <div class='item-info'>
           <h3 class='item-name'>
-            <%= "商品名" %>
+            <%= product_listing.title %>
           </h3>
           <div class='item-price'>
-            <span><%= "販売価格" %>円<br><%= '配送料負担' %></span>
+            <span><%= product_listing.price %>円<br><%= product_listing.delivery_charge %></span>
             <div class='star-btn'>
               <%= image_tag "star.png", class:"star-icon" %>
               <span class='star-count'>0</span>
             </div>
           </div>
         </div>
+        <% end %>
         <% end %>
       </li>
       <%# //商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
