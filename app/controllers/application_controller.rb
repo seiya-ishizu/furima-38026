@@ -1,9 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  def index
-    @product_listings = ProductListing.all
-  end
 
   private
   def configure_permitted_parameters
