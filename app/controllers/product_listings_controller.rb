@@ -15,7 +15,7 @@ class ProductListingsController < ApplicationController
   end
 
   def index
-    @product_listings = ProductListing.all("DESC")
+    @product_listings = ProductListing.order("created_at DESC")
   end
 
 
