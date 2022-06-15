@@ -14,6 +14,11 @@ class ProductListingsController < ApplicationController
     end
   end
 
+  def index
+    @product_listings = ProductListing.order("created_at DESC")
+  end
+
+
   private
 
   def product_listing_params
