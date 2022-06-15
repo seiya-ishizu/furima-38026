@@ -129,9 +129,9 @@
     <ul class='item-lists'>
 
       <%# 商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
-      <li class='list'>
-        <%= link_to new_product_listing_path do %>
+        <%# link_to "#" do %>
         <% @product_listings.each do |product_listing| %>
+    <li class='list'>
         <div class='item-img-content'>
           <%= image_tag "item-sample.png", class: "item-img" %>
           <%# if user_signed_in? && current_user.id == .user_id %>
@@ -139,7 +139,7 @@
               <span>Sold Out!!</span>
             </div>
           <%# end %>
-          <p><%= product_listing.title %></p>
+          <p><% product_listing.title %></p>
           <span class="name">
           </span>
         </div>
@@ -148,16 +148,17 @@
             <%= product_listing.title %>
           </h3>
           <div class='item-price'>
-            <span><%= product_listing.price %>円<br><%= product_listing.delivery_charge %></span>
+            <span><%= product_listing.price %>円<br><%= product_listing.delivery_charge.name %></span>
             <div class='star-btn'>
               <%= image_tag "star.png", class:"star-icon" %>
               <span class='star-count'>0</span>
             </div>
           </div>
         </div>
+              </li>
         <% end %>
-        <% end %>
-      </li>
+        <%# end %>
+
       <%# //商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
 
       <%# 商品がない場合は以下のダミー商品が表示されるようにしましょう %>
@@ -178,7 +179,7 @@
           </div>
         </div>
         <% end %>
-      </li>
+
       <%# //商品がある場合は表示されないようにしましょう %>
       <%# //商品がない場合は以下のダミー商品が表示されるようにしましょう %>
     </ul>
