@@ -128,12 +128,13 @@
     </div>
     <ul class='item-lists'>
 
-        <%# link_to "#" do %>
 
         <% @product_listings.each do |product_listing| %>
     <li class='list'>
+         <%= link_to product_listing_path(product_listing.id) do %>
         <div class='item-img-content'>
           <%= image_tag product_listing.image.variant(resize: '260x400'), class: 'product_listing-image' if product_listing.image.attached? %>
+
           <%# if user_signed_in? && current_user.id == .user_id %>
             <div class='sold-out'>
               <span>Sold Out!!</span>
@@ -152,9 +153,10 @@
             </div>
           </div>
         </div>
-     </li>
         <% end %>
-        <%# end %>
+     </li>
+
+        <% end %>
 
       <%if @product_listings  ==  [] %>
       <li class='list'>
