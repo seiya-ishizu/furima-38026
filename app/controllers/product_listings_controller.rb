@@ -15,7 +15,7 @@ class ProductListingsController < ApplicationController
   end
 
   def index
-    @product_listings = ProductListing.all
+    @product_listings = ProductListing.all("DESC")
   end
 
 
