@@ -22,6 +22,9 @@ class ProductListingsController < ApplicationController
     @product_listing = ProductListing.find(params[:id])
   end
 
+  def destroy
+  end
+
 
   private
 
