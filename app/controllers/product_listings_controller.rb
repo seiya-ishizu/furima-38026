@@ -1,6 +1,6 @@
 class ProductListingsController < ApplicationController
   before_action :set_message, only: [:edit, :show, :update, :destroy]
-  before_action :authenticate_user!,  except: [:index, :show]
+  before_action :authenticate_user!,  except: [:index, :show, :destroy]
 
   def new
     @product_listing = ProductListing.new
@@ -38,7 +38,8 @@ class ProductListingsController < ApplicationController
   def destroy
     if @product_listing.destroy
       redirect_to root_path
-    end
+    else
+      redirect_to root_path
   end
 
 
