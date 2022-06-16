@@ -1,5 +1,5 @@
 class ProductListingsController < ApplicationController
-  before_action :set_message, only: [:edit, :show, :update]
+  before_action :set_message, only: [:edit, :show, :update, :destroy]
   before_action :authenticate_user!,  except: [:index, :show]
 
   def new
@@ -22,8 +22,6 @@ class ProductListingsController < ApplicationController
   def show
   end
 
-  def destroy
-  end
 
   def edit
     redirect_to root_path unless current_user.id == @product_listing.user_id
@@ -34,6 +32,12 @@ class ProductListingsController < ApplicationController
        redirect_to product_listing_path
     else
       render "edit"
+    end
+  end
+
+  def destroy
+    if @product_listing.destroy
+      redirect_to root_path
     end
   end
 
