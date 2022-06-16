@@ -1,4 +1,5 @@
 class ProductListingsController < ApplicationController
+  before_action :set_tweet, only: [:edit, :show, :update]
   before_action :authenticate_user!,  except: [:index, :show]
 
   def new
@@ -19,16 +20,13 @@ class ProductListingsController < ApplicationController
   end
 
   def show
-    @product_listing = ProductListing.find(params[:id])
   end
 
   def edit
-    @product_listing = ProductListing.find(params[:id])
     redirect_to root_path unless current_user.id == @product_listing.user_id
   end
 
   def update
-    @product_listing = ProductListing.find(params[:id])
     if @product_listing.update(product_listing_params)
        redirect_to product_listing_path
     else
