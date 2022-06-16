@@ -1,5 +1,5 @@
 class ProductListingsController < ApplicationController
-  before_action :set_tweet, only: [:edit, :show, :update]
+  before_action :set_message, only: [:edit, :show, :update]
   before_action :authenticate_user!,  except: [:index, :show]
 
   def new
