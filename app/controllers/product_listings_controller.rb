@@ -1,4 +1,5 @@
 class ProductListingsController < ApplicationController
+  before_action :set_message, only: [:edit, :show, :update]
   before_action :authenticate_user!,  except: [:index, :show]
 
   def new
@@ -19,10 +20,21 @@ class ProductListingsController < ApplicationController
   end
 
   def show
-    @product_listing = ProductListing.find(params[:id])
   end
 
   def destroy
+  end
+
+  def edit
+    redirect_to root_path unless current_user.id == @product_listing.user_id
+  end
+
+  def update
+    if @product_listing.update(product_listing_params)
+       redirect_to product_listing_path
+    else
+      render "edit"
+    end
   end
 
 
@@ -31,6 +43,11 @@ class ProductListingsController < ApplicationController
   def product_listing_params
     params.require(:product_listing).permit(:title,:image,:explain,:category_id,:condition_id,:delivery_charge_id,:prefecture_id ,:shipping_date_id,:price).merge(user_id: current_user.id)
   end
+
+  def set_message
+    @product_listing = ProductListing.find(params[:id])
+  end
+
 
   
 
