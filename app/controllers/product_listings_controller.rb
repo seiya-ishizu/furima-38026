@@ -22,6 +22,22 @@ class ProductListingsController < ApplicationController
     @product_listing = ProductListing.find(params[:id])
   end
 
+  def edit
+    @product_listing = ProductListing.find(params[:id])
+    redirect_to root_path unless current_user.id == @product_listing.user_id
+  end
+
+  def update
+    @product_listing = ProductListing.find(params[:id])
+    @product_listing.update(product_listing_params)
+    if @product_listing.save
+      redirect_to product_listing_path
+    else
+      render "edit"
+    end
+  end
+
+
 
   private
 
