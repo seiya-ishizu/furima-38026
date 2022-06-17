@@ -1,6 +1,9 @@
 class ProductListingsController < ApplicationController
-  before_action :set_message, only: [:edit, :show, :update]
+  before_action :set_message, only: [:edit, :show, :update, :destroy]
+  before_action :move_to_index, only: [:edit, :destroy]
   before_action :authenticate_user!,  except: [:index, :show]
+  
+
 
   def new
     @product_listing = ProductListing.new
@@ -22,8 +25,8 @@ class ProductListingsController < ApplicationController
   def show
   end
 
+
   def edit
-    redirect_to root_path unless current_user.id == @product_listing.user_id
   end
 
   def update
@@ -34,7 +37,10 @@ class ProductListingsController < ApplicationController
     end
   end
 
-
+  def destroy
+      @product_listing.destroy
+      redirect_to root_path
+  end
 
 
   private
@@ -45,6 +51,10 @@ class ProductListingsController < ApplicationController
 
   def set_message
     @product_listing = ProductListing.find(params[:id])
+  end
+
+  def move_to_index
+    redirect_to root_path unless current_user.id == @product_listing.user_id
   end
 
 
