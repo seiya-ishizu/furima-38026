@@ -37,11 +37,9 @@ class ProductListingsController < ApplicationController
   end
 
   def destroy
-    if @product_listing.destroy
+      @product_listing.destroy
       redirect_to root_path unless current_user.id == @product_listing.user_id
-    else
-      render "index"
-    end
+      redirect_to root_path
   end
 
 
