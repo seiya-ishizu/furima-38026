@@ -59,4 +59,3 @@ class ProductListingsController < ApplicationController
   
 
 end
-end
