@@ -1,17 +1,15 @@
 class PurchaseHistoriesController < ApplicationController
   before_action :authenticate_user!, only: [:index] 
+  before_action :set_message, only: [:index, :create]
 
   def index
-    @product_listing = ProductListing.find(params[:product_listing_id])
     @order = Order.new
     if @product_listing.user_id == current_user.id || @product_listing.purchase_history.present?
-
       redirect_to root_path
     end
   end
 
   def create
-    @product_listing = ProductListing.find(params[:product_listing_id])
     @order = Order.new(order_params)
     if @order.valid?
       pay_item
@@ -35,6 +33,10 @@ private
       card: order_params[:token],    # カードトークン
       currency: 'jpy'                 # 通貨の種類（日本円）
     )
+  end
+
+  def set_message
+    @product_listing = ProductListing.find(params[:product_listing_id])
   end
 
 end

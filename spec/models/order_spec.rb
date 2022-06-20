@@ -1,9 +1,9 @@
 require 'rails_helper'
 RSpec.describe Order, type: :model do
     before do
+    user_id { FactoryBot.create(:user).id }
     @order = FactoryBot.build(:order)
     end
-
   describe "商品の購入" do
     context '商品の購入ができる場合' do
       it "建物名以外の全ての項目が入力されていれば登録できる" do
