@@ -22,5 +22,5 @@ class User < ApplicationRecord
   
   include ActiveHash::Associations
   has_many :product_listings
-  #has_many :purchase_histories
+  has_many :purchase_histories
 end

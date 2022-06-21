@@ -135,11 +135,11 @@
         <div class='item-img-content'>
           <%= image_tag product_listing.image.variant(resize: '260x400'), class: 'product_listing-image' if product_listing.image.attached? %>
 
-          <%# if user_signed_in? && current_user.id == .user_id %>
+          <% if product_listing.purchase_history.present?  %>
             <div class='sold-out'>
               <span>Sold Out!!</span>
             </div>
-          <%# end %>
+          <% end %>
         </div>
         <div class='item-info'>
           <h3 class='item-name'>

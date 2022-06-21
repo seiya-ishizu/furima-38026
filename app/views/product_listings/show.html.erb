@@ -8,7 +8,7 @@
     </h2>
     <div class="item-img-content">
       <%= image_tag @product_listing.image.variant(resize: '1000x1800'), class: 'product_listing-image'  %>
-      <% if '商品が購入済みである' %>
+      <% if @product_listing.purchase_history != nil %>
       <div class="sold-out">
         <span>Sold Out!!</span>
       </div>
@@ -23,13 +23,13 @@
       </span>
     </div>
 
-<% if user_signed_in?  %>
+<% if user_signed_in? && @product_listing.purchase_history == nil %>
   <% if current_user.id == @product_listing.user_id %>
-    <%= link_to "商品の編集", edit_product_listing_path, method: :get, class: "item-red-btn" %>
+    <%= link_to "商品の編集", edit_product_listing_path(@product_listing.id), method: :get, class: "item-red-btn" %>
     <p class="or-text">or</p>
-    <%= link_to "削除", product_listing_path, method: :delete, class:"item-destroy" %>
+    <%= link_to "削除", product_listing_path(@product_listing.id), method: :delete, class:"item-destroy" %>
   <% else %>
-    <%= link_to "購入画面に進む", "#" ,class:"item-red-btn"%>
+    <%= link_to "購入に進む", product_listing_purchase_histories_path(@product_listing.id) ,class:"item-red-btn"%>
   <% end %>
 <% end %>
 
