@@ -3,7 +3,8 @@ RSpec.describe Order, type: :model do
     before do
       user = FactoryBot.create(:user)
       product_listing = FactoryBot.create(:product_listing)
-      @order = FactoryBot.build(:order, user_id: user.id)
+      @order = FactoryBot.build(:order, user_id: user.id, product_listing_id: product_listing.id)
+      sleep 0.1
     end
   describe "商品の購入" do
     context '商品の購入ができる場合' do
