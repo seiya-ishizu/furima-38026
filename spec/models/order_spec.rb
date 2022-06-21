@@ -1,8 +1,8 @@
 require 'rails_helper'
 RSpec.describe Order, type: :model do
     before do
-    user_id { FactoryBot.create(:user).id }
-    @order = FactoryBot.build(:order)
+      user = FactoryBot.create(:user)
+      @order = FactoryBot.build(:order, user_id: user.id)
     end
   describe "商品の購入" do
     context '商品の購入ができる場合' do
