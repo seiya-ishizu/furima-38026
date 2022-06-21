@@ -2,6 +2,7 @@ require 'rails_helper'
 RSpec.describe Order, type: :model do
     before do
       user = FactoryBot.create(:user)
+      product_listing = FactoryBot.create(:product_listing)
       @order = FactoryBot.build(:order, user_id: user.id)
     end
   describe "商品の購入" do
@@ -31,7 +32,7 @@ RSpec.describe Order, type: :model do
         expect(@order.errors.full_messages).to include("Postcode is invalid")
       end
       it "都道府県が空だと購入できない" do
-        @order.prefecture_id = ''  
+        @order.prefecture_id = '1'  
         @order.valid?
         expect(@order.errors.full_messages).to include("Prefecture can't be blank")
       end
@@ -51,7 +52,7 @@ RSpec.describe Order, type: :model do
         expect(@order.errors.full_messages).to include("Phone number can't be blank")
       end
       it "電話番号が9桁以下だと購入できない" do
-        @order.phone_number = '123'  
+        @order.phone_number = '12345678'  
         @order.valid?
         expect(@order.errors.full_messages).to include("Phone number is invalid")
       end
