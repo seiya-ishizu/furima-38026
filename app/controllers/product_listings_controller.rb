@@ -1,7 +1,8 @@
 class ProductListingsController < ApplicationController
+  before_action :authenticate_user!,  except: [:index, :show]
   before_action :set_message, only: [:edit, :show, :update, :destroy]
   before_action :move_to_index, only: [:edit, :destroy]
-  before_action :authenticate_user!,  except: [:index, :show]
+ 
   
 
 
